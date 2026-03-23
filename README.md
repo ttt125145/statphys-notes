@@ -1,5 +1,16 @@
 # statphys-notes
 
+Notes and discussions on statistical physics and complex systems:
+Notes, derivations, and discussions on
+
+- statistical physics
+- complex systems
+- glass
+- jamming
+- mean-field theory
+- high-dimensional physics
+
+
 这是一个使用 https://quartz.jzhao.xyz/ 构建的个人笔记与数字花园项目，托管于 GitHub Pages。  
 在线访问地址：**https://ttt125145.github.io/statphys-notes/**
 
