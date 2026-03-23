@@ -7,6 +7,9 @@ on:
   # 允许在 GitHub 网页界面手动触发此工作流
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # 设置 GitHub Pages 部署的权限
 permissions:
   contents: write
