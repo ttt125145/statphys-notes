@@ -1,3 +1,286 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* 自定义大纲样式 - 针对您描述的需求 */
+
+/* 1. 首先，确保右侧边栏有足够空间 */
+.sidebar.right {
+  min-width: 300px; /* 增加最小宽度，给大纲更多空间 */
+  max-width: 350px; /* 设置最大宽度，避免过宽 */
+}
+
+/* 2. 大纲容器样式 - 拉长显示区域 */
+.table-of-contents {
+  max-height: 70vh; /* 使用视口高度的70%，可根据需要调整 */
+  overflow-y: auto; /* 添加垂直滚动条，当内容过多时 */
+  padding-right: 8px; /* 为滚动条留出空间 */
+  
+  /* 自定义滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--lightgray);
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 3px;
+  }
+}
+
+/* 3. 层级缩进和指引线 */
+.table-of-contents ul {
+  position: relative;
+  list-style: none;
+  padding-left: 1.5em; /* 整体左内边距 */
+}
+
+/* 创建垂直指引线 */
+.table-of-contents ul:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.5em; /* 调整此值以控制指引线位置 */
+  border-left: 1px solid var(--lightgray);
+  opacity: 0.6;
+}
+
+/* 每个层级的缩进 */
+.table-of-contents ul ul {
+  margin-left: 0; /* 移除默认的外边距 */
+  padding-left: 1.2em; /* 每个子层级增加缩进 */
+  border-left: none; /* 移除子层级的左侧边框，避免重复 */
+}
+
+/* 4. 列表项样式 - 包含缩进点和指引线 */
+.table-of-contents li {
+  position: relative;
+  margin-bottom: 0.4em;
+  line-height: 1.4;
+}
+
+/* 创建层级指示点（在指引线上的小圆点） */
+.table-of-contents li:before {
+  content: '';
+  position: absolute;
+  left: -1.5em; /* 调整此值以对齐指引线 */
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background-color: var(--darkgray);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* 5. 链接样式 */
+.table-of-contents a {
+  display: block;
+  padding: 0.2em 0.5em;
+  color: var(--dark);
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+}
+
+.table-of-contents a:hover {
+  background-color: var(--lightgray);
+  color: var(--primary);
+  padding-left: 0.8em;
+}
+
+/* 6. 不同层级的标题样式 */
+.table-of-contents a[data-level="2"] { /* h2 标题 */
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-top: 0.8em;
+}
+
+.table-of-contents a[data-level="3"] { /* h3 标题 */
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--dark);
+}
+
+.table-of-contents a[data-level="4"] { /* h4 标题 */
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--gray);
+}
+
+.table-of-contents a[data-level="5"] { /* h5 标题 */
+  font-weight: 300;
+  font-size: 0.8em;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.table-of-contents a[data-level="6"] { /* h6 标题 */
+  font-weight: 300;
+  font-size: 0.75em;
+  color: var(--lightgray);
+  font-style: italic;
+}
+
+/* 7. 折叠/展开功能样式 */
+/* 注意：Quartz 默认可能已支持折叠，这里增强样式 */
+.table-of-contents .collapsible {
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+/* 折叠指示器（三角形） */
+.table-of-contents .collapsible:before {
+  content: '▶';
+  position: absolute;
+  left: -0.8em;
+  top: 0.2em;
+  font-size: 0.7em;
+  color: var(--gray);
+  transition: transform 0.2s ease;
+}
+
+.table-of-contents .collapsible.collapsed:before {
+  transform: rotate(90deg);
+  color: var(--primary);
+}
+
+/* 折叠状态下的子项 */
+.table-of-contents .collapsible ~ ul {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.table-of-contents .collapsible.collapsed ~ ul {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* 8. 当前活动标题的高亮 */
+.table-of-contents a.active {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+}
+
+/* 9. 移动端适配 */
+@media (max-width: 1200px) {
+  .sidebar.right {
+    min-width: 250px;
+    max-width: 280px;
+  }
+  
+  .table-of-contents {
+    max-height: 60vh;
+  }
+}
+
+/* 完全重置TOC样式 */
+.toc .toc-content {
+  border: none !important;
+  background: transparent !important;
+  padding-left: 0 !important;
+}
+
+/* 去掉左侧所有装饰 */
+.toc-content:before,
+.toc-content li:before {
+  display: none !important;
+}
+
+/* 增大层级缩进，使用em单位保持相对比例 */
+.toc-content li.depth-0 { padding-left: 0 !important; margin-bottom: 12px !important; }
+.toc-content li.depth-1 { padding-left: 1.8em !important; margin-bottom: 8px !important; }
+.toc-content li.depth-2 { padding-left: 3.6em !important; margin-bottom: 6px !important; }
+.toc-content li.depth-3 { padding-left: 5.4em !important; margin-bottom: 5px !important; }
+.toc-content li.depth-4 { padding-left: 7.2em !important; margin-bottom: 4px !important; }
+.toc-content li.depth-5 { padding-left: 9em !important; margin-bottom: 3px !important; }
+
+/* 使用更清晰的无衬线字体系统 */
+.toc .toc-content {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* 层级字体样式 - 使用不同颜色和粗细增强视觉层次 */
+.toc-content li.depth-0 > a {
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  color: #2c3e50 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 8px 12px !important;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border-radius: 6px !important;
+  border-left: 4px solid #3498db !important;
+  margin-bottom: 12px !important;
+  display: block !important;
+}
+
+.toc-content li.depth-1 > a {
+  font-weight: 700 !important;
+  font-size: 14.5px !important;
+  color: #34495e !important;
+  padding: 6px 10px !important;
+  border-left: 3px solid #2ecc71 !important;
+  background-color: rgba(46, 204, 113, 0.05) !important;
+  border-radius: 4px !important;
+  margin: 8px 0 !important;
+}
+
+.toc-content li.depth-2 > a {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: #4a5568 !important;
+  padding: 5px 8px !important;
+  border-left: 2px solid #e74c3c !important;
+  background-color: rgba(231, 76, 60, 0.03) !important;
+  border-radius: 3px !important;
+  margin: 6px 0 !important;
+}
+
+.toc-content li.depth-3 > a {
+  font-weight: 500 !important;
+  font-size: 13.5px !important;
+  color: #718096 !important;
+  padding: 4px 8px !important;
+  border-left: 1px solid #9b59b6 !important;
+  margin: 4px 0 !important;
+}
+
+.toc-content li.depth-4 > a {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  color: #a0aec0 !important;
+  padding: 3px 8px !important;
+  border-left: 1px dashed #95a5a6 !important;
+  margin: 3px 0 !important;
+}
+
+.toc-content li.depth-5 > a {
+  font-weight: 300 !important;
+  font-size: 12.5px !important;
+  color: #cbd5e0 !important;
+  font-style: italic !important;
+  padding: 2px 8px !important;
+  margin: 2px 0 !important;
+}
+
+/* 悬停效果 */
+.toc-content a:hover {
+  transform: translateX(4px) !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 当前活动项 */
+.toc-content a.active {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3) !important;
+}
