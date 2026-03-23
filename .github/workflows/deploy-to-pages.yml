@@ -3,7 +3,7 @@ name: Deploy Quartz Site to Pages
 on:
   # 设置为在您的主分支有推送时触发（请将 `v4` 替换为您实际使用的分支名）
   push:
-    branches: ["V4"]
+    branches: ["v4"]
   # 允许在 GitHub 网页界面手动触发此工作流
   workflow_dispatch:
 
