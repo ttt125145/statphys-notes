@@ -1,6 +1,15 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+const explorerOptions = {
+  folderDefaultState: "open" as const,
+  useSavedState: false,
+  filterFn: (node: { slugSegment: string }) => {
+    // Hide system/assets folders so note categories are the top-level structure.
+    return !node.slugSegment.startsWith(".") && node.slugSegment !== "images" && node.slugSegment !== "tags"
+  },
+}
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -35,7 +44,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer(explorerOptions),
   ],
   right: [
     // 修改点：Graph View 现在仅在首页 (slug === "index") 显示
@@ -60,7 +69,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer(explorerOptions),
   ],
   right: [],
 }
