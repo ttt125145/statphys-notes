@@ -1,0 +1,7 @@
+-----geometry宏包功能-----
+\usepackage[landscape]{geometry}  %[landscape]参数横放长方形纸张
+
+\geometry{a4paper,      %设置纸张类型:a3 a4 b5 
+left=1cm,right=1cm,top=1cm,bottom=1cm}    %设置边距:left right top bottom
+
+

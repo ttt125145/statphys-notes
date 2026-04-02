@@ -1,0 +1,40 @@
+
+\bfseries   %加粗,加在正文
+
+\itshape    %斜体,加在正文
+
+字号:
+\fontsize{⟨size⟩}{⟨base line-skip⟩}  %设置字号,两个参数乘算
+
+size:尺寸参数 \tiny \scriptsize \footnotesize \small \normalsize \large \Large \LARGE \huge \Huge
+base line-skip:基础行距 10pt 11pt 12pt 
+
+英文字体:
+
+\rmfamily   %衬线字体,默认
+\sffamily   %非衬线字体
+\ttfamily   %等宽字体
+
+---- fontspec宏包功能 -----
+\setmainfont{}  %设置全局字体,放在全文导言区
+\fontspec{}     %正文区设置字体
+
+
+
+---- ctex宏包功能 -----
+
+^^字号功能
+
+\zihao{}  %加在正文中,{}内填字号
+
+字号:  0-8      初号到8号  依次减小
+      -0~-8     小初号到小8号  小号比原号小一点
+
+^^字体功能
+
+\heiti %加在正文
+or
+\begin(heiti)   %作为环境参数
+\end{heiti}
+
+字体: \songti \heiti \yahei \fangsong \kaishu \lishu \youyuan

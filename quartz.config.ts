@@ -8,8 +8,8 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "统计物理与复杂系统笔记库",  // 更改为您的网站名称
-    pageTitleSuffix: " | 统计物理笔记",
+    pageTitle: "笔记库",  // 更改为您的网站名称
+    pageTitleSuffix: " | 笔记库",
     enableSPA: true,
     enablePopovers: true,
     analytics: {

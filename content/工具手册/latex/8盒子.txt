@@ -1,0 +1,16 @@
+
+\fbox{选中内容}     %框进盒子,不可换行
+
+\framebox[左右宽度][对齐方式]{选中内容} 
+% 宽度: 10em    对齐: l左 r右 c居中 s两端
+
+minipage盒子环境
+\begin{minipage}[外对齐:t m b][高度:em][内对齐:t m b][宽度:em]
+
+\rule[上下移:pt]{宽度:em}{高度:em}
+
+
+_____盒子设置_____
+
+\setlength{\fboxrule}{2pt}  %边框粗细
+\setlength{\fboxsep}{2pt}   %内边距--边框到文字的距离

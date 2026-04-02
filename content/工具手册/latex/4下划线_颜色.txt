@@ -1,0 +1,20 @@
+---- ulem宏包功能 -----
+\usepackage[normalem]{ulem}
+
+\uline{选中文本}    %下划线
+\uuline{选中文本}  %双下划线
+
+\uwave{}        %波浪线
+\dotuline{}     %点下划线
+\sout{}         %删除线
+\xout{}         %密集斜线覆盖    
+
+
+----- xcolor宏包功能 -----
+
+\textcolor{blue}{选中文本}          %设置颜色
+\textcolor[rgb]{1,0,0}{选中文本}    %自定义颜色,用rgb元组
+
+\fcolorbox{边框色}{背景色}{选中文本}      %设置文字背景颜色
+\fcolorbox[rgb]{0,0,1}{1,0,0}{选中文本}         %用rgb元组
+边框色不必须,一个{}时默认设置背景色

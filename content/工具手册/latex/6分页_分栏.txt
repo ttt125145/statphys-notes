@@ -1,0 +1,7 @@
+
+
+\newpage   %从此处分页
+
+\twocolumn   %开新页,并分成两栏
+\onecolumn   %恢复一栏
+

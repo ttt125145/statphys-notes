@@ -1,0 +1,87 @@
+-----graphicx宏包功能-----
+\usepackage[draft]{graphicx}    % [draft] 起草时用,只编译轮廓,节约耗时
+
+\includegraphics[尺寸设置]{图片路径}  %插入图片
+% 尺寸设置: width= em  cm  \linewidth(对齐宽度)  0.5\linewidth(按比例宽度)
+            scale=0.4  按原比例缩放
+            angle=45    旋转度数
+
+
+创建浮动体:
+
+\begin{figure}[htbp!]   %参数控制自适应放合适位置
+    \centering      % 居中
+    \includegraphics[尺寸设置]{图片路径}  % 插入图片
+    \caption{图标题}    %图标题位于图片上侧或下侧居中,会自动给一个图序号
+    \label{标签}    % 用任意字符所为唯一标签,用于文本索引图序号
+\end{figure}
+
+% h : here 这里
+% t : top  顶部
+% b : bottom 底部
+% ! :忽略一些限制
+
+\ref{图标签}   %引用对应图的序号
+-----hyperref宏包功能-----
+\usepackage[hidelinks]{hyperref} %[hidelinks]去掉一个挡道的方框
+\autoref{标签}
+这种方式索引的图或表可以点击跳转过去
+
+
+_________排版例子________
+
+% 多子图排进一张图(上2并排,下1)
+
+\begin{figure}   
+    \centering      
+    \includegraphics[width=0.4\linewidth]{fig1}  
+    \hspace{2em} %两上子图间距   \hfill  %两子图两边对齐填充行宽
+    \includegraphics[width=0.4\linewidth]{fig2} \\
+    \includegraphics[width=\linewidth]{fig3}
+    \vspace{1em} %上下子图间距
+    \caption{图标题}    
+    \label{标签}    
+\end{figure}
+
+%并排2独立图
+
+\begin{figure}   
+    \centering
+    \begin{minipage}{0.4\linewidth}         % 盒子设置0.4倍行宽
+        \includegraphics[width=\linewidth]{fig1} %图沿用盒子宽度
+        \caption{fig1标题} 
+    \end{minipage}     
+     % 这里加空格会分段,意味着上下排版.不加就是并列 
+    \begin{minipage}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{fig2}
+        \caption{fig2标题} 
+    \end{minipage}
+
+
+    \caption{图标题}    
+    \label{标签}    
+\end{figure}
+
+% 多子图排进一张图(上2并排,下1)(共用大标题,各自有小标题)
+需要宏包subcaption
+\usepackage{subcaption}
+
+\begin{figure}   
+    \centering  
+    \begin{subfigure}{0.4\linewidth}       % 用subfigure创建子图环境
+        \includegraphics[width=\linewidth]{fig1}
+        \caption{子标题1}
+    \end{subfigure}  
+    \hspace{2em}        %两上子图间距 or  \hfill  %两子图两边对齐填充行宽
+    \begin{subfigure}{0.4\linewidth}       
+        \includegraphics[width=\linewidth]{fig2}
+        \caption{子标题2}
+    \end{subfigure} \\
+    \begin{subfigure}{\linewidth}       
+        \includegraphics[width=\linewidth]{fig3}
+        \caption{子标题3}
+    \end{subfigure}
+    \vspace{1em}        %上下子图间距
+    \caption{图标题}    
+    \label{标签}    
+\end{figure}

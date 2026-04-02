@@ -1,0 +1,44 @@
+环境名  tabular表格
+
+%说明模板:
+\begin{tabular}[外对齐]{|c|c|c|}  % c:列  |:竖框线
+    \hline                    %横框线
+    11 & 12 & 13 \\
+    \hline                    %横框线
+    21 & 22 & 23 \\
+    \hline                    %横框线
+    31 & 32 & 33 \\
+end{tabular}
+
+%列指代参数:
+    l c r :控制列内容对齐边框的方式   l左对齐 c居中 r右对齐
+    p{4em}:限制列宽,超出内容会增加单元格高度,并换行
+%参数简写方式:
+    *{重复数}{重复单元} %例如 *{5}{|c} =|c|c|c|c|c
+
+%外对齐参数:
+    t m b :控制列表外左右内容对齐列表的上中下    t上 m中 b下
+
+% 横框线:
+\hline 从头画到尾
+\cline[1-2] 只画某几列
+
+
+_____浮动表格______
+
+环境名  table浮动表格
+
+\begin{table}[htbp]  % [htbp]控制浮动位置
+    \centering
+    \caption{表标题}
+    \begin{tabular}[外对齐]{|c|c|c|}  % c:列  |:竖框线
+        \hline                    %横框线
+        11 & 12 & 13 \\
+        \hline                    %横框线
+        21 & 22 & 23 \\
+        \hline                    %横框线
+        31 & 32 & 33 \\
+\end{tabular}
+
+\label{表标签}
+\end{table}

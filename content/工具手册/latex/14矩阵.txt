@@ -1,0 +1,36 @@
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+
+
+环境名 bmatrix方括号矩阵
+       vmatrix行列式
+       pmatrix柔和方括号矩阵(常用)
+       bmatrix花括号
+
+\begin{pmatrix}
+    11 & 12 & 13    \\
+    21 & 22 & 23    \\
+    31 & 32 & 33    \\
+\end{pmatrix}
+
+有省略的矩阵的模板:
+\begin{pmatrix}
+    11 & 12 & \cdots & 13    \\
+    21 & 22 & \cdots & 23    \\
+    \vdocs &\vdocs &\ddocs &\vdocs \\
+    31 & 32 & \cdots & 33    \\
+\end{pmatrix}
+
+#\cdot横三点 \vdots竖三点 \ddocs斜三点
+
+
+-----tabularray宏包功能-----
+\usepackage{tabularray}
+\useTblrLibrary{amsmath}
+
+环境名前加+号,可以美化矩阵排版,避免过度拥挤
+传入参数row{2}={blue9},col{1}={blue9} 可以渲染指定行,列的背景颜色
+
+
+

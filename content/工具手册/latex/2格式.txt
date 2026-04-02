@@ -1,0 +1,47 @@
+#换行,分段,空格
+\\      %换行
+\par    %分段
+\hspace{2em}  %空格  输入数字+计量单位,如2em,空格字符数,可小数
+\vspace{2em}  %行间距
+
+\quad 空格
+
+%计量单位: em  pt  cm
+
+\hfill  %插入某行中间,按页面横向宽度左右对齐    %一行插多个可均分中间间隙
+\vfill  %行间插入,按页面纵向上下对齐           %插多个可均分中间间隙 
+
+\hrulefill %横向填充,用横线
+\dotfill   %横向填充,用点
+
+# 按比例数分配空格长度
+\hspace{\stretch{比例数1}}
+正文
+\hspace{\stretch{比例数1}}
+\正文
+
+#居中,左对齐,右对齐--需要创建独立环境 
+#center居中环境  左对齐flushleft  右对齐flushright   
+\begin{center}
+文本
+\end{center}
+
+
+#段头缩进--导言区设置
+\setlength{\parindent}{2em}  %{}内填距离
+
+
+#行距--导言区设置
+\linespread{1.5} %{}内填基础行距倍数
+\linespread{1.5}\selectfont  %加在正文中,此处以下内容应用行距
+
+
+
+
+
+
+
+
+
+
+
